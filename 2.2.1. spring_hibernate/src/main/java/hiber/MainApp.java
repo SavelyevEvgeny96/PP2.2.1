@@ -18,12 +18,16 @@ public class MainApp {
 
       User user = new User("Игорь", "Великий", "igorV1989@mail.com");
       user.setCar(new Car("Porh", 991));
+      userService.add(user);
       User user2 = new User("Vova", "Karova", "MyMY@mail.com");
       user2.setCar(new Car("Lexus", 666));
+      userService.add(user2);
       User user3 = new User("Игнат", "Игнатов", "igNigN@mail.com");
       user3.setCar(new Car("Lambo", 228));
+      userService.add(user3);
       User user4 = new User("Джигит", "Лазейкин", "Azzzza@mail.com");
       user4.setCar(new Car("Кавер Самолет ", 3000));
+      userService.add(user4);
 
       List<User> userList = userService.listUsers();
       userList.forEach(System.out::println);
