@@ -1,6 +1,7 @@
 package hiber;
 
 import hiber.config.AppConfig;
+import hiber.model.Car;
 import hiber.model.User;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -9,25 +10,26 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class MainApp {
-   public static void main(String[] args) throws SQLException {
-      AnnotationConfigApplicationContext context = 
-            new AnnotationConfigApplicationContext(AppConfig.class);
+   public static void main(String[] args) {
+      AnnotationConfigApplicationContext context =
+              new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
 
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+      User user = new User("Игорь", "Великий", "igorV1989@mail.com");
+      user.setCar(new Car("Porh", 991));
+      User user2 = new User("Vova", "Karova", "MyMY@mail.com");
+      user2.setCar(new Car("Lexus", 666));
+      User user3 = new User("Игнат", "Игнатов", "igNigN@mail.com");
+      user3.setCar(new Car("Lambo", 228));
+      User user4 = new User("Джигит", "Лазейкин", "Azzzza@mail.com");
+      user4.setCar(new Car("Кавер Самолет ", 3000));
 
-      List<User> users = userService.listUsers();
-      for (User user : users) {
-         System.out.println("Id = "+user.getId());
-         System.out.println("First Name = "+user.getFirstName());
-         System.out.println("Last Name = "+user.getLastName());
-         System.out.println("Email = "+user.getEmail());
-         System.out.println();
-      }
+      List<User> userList = userService.listUsers();
+      userList.forEach(System.out::println);
+
+      List<User> userList2 = userService.byCar("Жига",999);
+      userList2.forEach(System.out::println);
 
       context.close();
    }
