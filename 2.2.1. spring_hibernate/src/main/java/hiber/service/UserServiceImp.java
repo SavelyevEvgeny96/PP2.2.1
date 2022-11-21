@@ -26,12 +26,6 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
-   @Override
-   public List<User> byCar() {
-      return null;
-   }
-
-
    @Transactional(readOnly = true)
    @Override
    public List<User> byCar(String mod, Integer ser) {

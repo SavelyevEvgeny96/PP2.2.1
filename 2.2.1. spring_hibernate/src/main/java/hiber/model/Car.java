@@ -13,9 +13,9 @@ public class Car {
     private String model;
     @Column(name = "series")
     private int series;
-    @OneToOne
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name = "User", referencedColumnName = "id")
+//    private User user;
 
     public Car(String model, Integer series) {
 
@@ -55,15 +55,15 @@ public class Car {
         this.id = id;
         this.model = model;
         this.series = series;
-    }
+    }}
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-}
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+//}
 
 

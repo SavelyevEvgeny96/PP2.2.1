@@ -9,8 +9,6 @@ public interface UserService {
     void add(User user);
     List<User> listUsers();
 
-    @Transactional(readOnly = true)
-    List<User> byCar();
 
     @Transactional(readOnly = true)
     List<User> byCar(String mod, Integer ser);
